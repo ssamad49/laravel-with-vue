@@ -14,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::select('id','name','price','description')->get();
+        return Book::select('id','name','price','description')->paginate(12);
     }
 
     public function store(Request $request)
