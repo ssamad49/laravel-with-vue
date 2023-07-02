@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Exports\ExportBook;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
 {
@@ -67,5 +69,9 @@ class BookController extends Controller
             'message' => 'Book delete successfully'
         ]);
 
+    }
+
+    public function exportBooks(){
+        return Excel::download(new ExportBook, 'books.xlsx');
     }
 }
