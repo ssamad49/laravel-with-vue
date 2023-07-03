@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Exports\ExportBook;
+use App\Imports\BooksImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -73,5 +74,13 @@ class BookController extends Controller
 
     public function exportBooks(){
         return Excel::download(new ExportBook, 'books.xlsx');
+    }
+
+    public function importBooks()
+    {
+        Excel::import(new BooksImport, request()->file('file'));
+          return response()->json([
+            'message' => 'ajoute bien'
+        ]);
     }
 }

@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('books',BookController::class);
 Route::get('/export-books', [BookController::class, 'exportBooks']);
+Route::post('/import-books', [BookController::class, 'importBooks']);
